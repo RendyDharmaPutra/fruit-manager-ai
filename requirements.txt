@@ -1,1 +1,5 @@
-flask
+Flask
+scikit-learn
+numpy
+pandas
+holidays
