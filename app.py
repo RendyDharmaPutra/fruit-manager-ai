@@ -14,14 +14,14 @@ model = load_model()
 def calculate_price():
     try:
         data = request.json
-        fruit_weights = [float(w) for w in data.get('berat_buah')]
-        distance = float(data.get('jarak'))
-        fuel_price = float(data.get('harga_bensin'))
-        weather = int(data.get('cuaca'))
-        date = data.get('tanggal')
+        fruit_weights = float(data.get('totalWeight'))
+        distance = float(data.get('distance'))
+        fuel_price = float(data.get('fuelPrice'))
+        weather = int(data.get('weather'))
+        date = data.get('transactionTime')
 
         is_public_holiday = is_holiday(date)
-        total_fruit_price = sum(fruit_weights) * 10000
+        total_fruit_price = data.get("totalPrice")
 
         # Hanya hitung sekali jika < 10
         percentages = None
@@ -38,7 +38,7 @@ def calculate_price():
         # Simpan ke CSV hanya jika < 10
         if percentages is not None:
             append_to_csv([
-                sum(fruit_weights), distance, fuel_price, weather, is_public_holiday,
+                fruit_weights, distance, fuel_price, weather, is_public_holiday,
                 percentages[0], percentages[1]
             ])
             git_commit_and_push()

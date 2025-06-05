@@ -12,7 +12,6 @@ def load_model():
     return model
 
 def predict_percentages(model, fruit_weights, distance, fuel_price, weather, holiday):
-    total_weight = sum(fruit_weights)
-    features = np.array([[total_weight, distance, fuel_price, weather, holiday]])
+    features = np.array([[fruit_weights, distance, fuel_price, weather, holiday]])
     prediction = model.predict(features)[0]
     return prediction.tolist()
