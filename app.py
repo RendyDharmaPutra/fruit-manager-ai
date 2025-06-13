@@ -30,10 +30,10 @@ def calculate_price():
                 model, fruit_weights, distance, fuel_price, weather, is_public_holiday
             )
 
-        total_price = calculate_total_price(
+        total_price = round(calculate_total_price(
             fruit_weights, distance, fuel_price, weather,
             is_public_holiday, total_fruit_price, model, percentages
-        )
+        ))
 
         # Simpan ke CSV hanya jika < 10
         if percentages is not None:
