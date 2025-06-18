@@ -14,7 +14,7 @@ def append_to_csv(row, path='datalatihreal.csv'):
 
 def git_commit_and_push(file_path='datalatihreal.csv'):
     try:
-        subprocess.run(['git', 'add', file_path], check=True)
+        subprocess.run(['git', 'add', '.'], check=True)
         subprocess.run(['git', 'commit', '-m', 'Update datalatihreal.csv with new input data'], check=True)
         subprocess.run(['git', 'push'], check=True)
     except subprocess.CalledProcessError as e:
